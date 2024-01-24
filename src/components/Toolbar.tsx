@@ -5,7 +5,7 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch } from 'react-redux'
 import { getCountriesByRegion } from '../redux/slices/countriesSlice'
 
-const Toolbar = () => {
+const Toolbar = ({ search, setSearch }) => {
   const dispatch = useDispatch()
 
   const handleFilter = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -25,6 +25,7 @@ const Toolbar = () => {
           type="text"
           className={styles.input}
           placeholder="Search for a country..."
+          onChange={(e) => setSearch(e.target.value.toLowerCase())}
         />
       </div>
 

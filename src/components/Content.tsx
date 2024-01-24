@@ -1,12 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './styles/Content.module.css'
 import { useSelector } from 'react-redux'
 import { selectCountries } from '../redux/slices/countriesSlice'
+import { Link } from 'react-router-dom'
+import Toolbar from './Toolbar'
 
-
-const Content = () => {
+const Content = ({ search, setSearch }) => {
   const { loading } = useSelector((state) => state.countries)
   const countries = useSelector(selectCountries)
+  
+  const searchItems = search !== "" ? countries.filter((country) => country.name.common.toLowerCase().includes(search)) : countries
 
   useEffect(() => {
     console.log(countries)
@@ -20,7 +23,7 @@ const Content = () => {
         </div>
         <div className={styles.description}>
           <div className={styles.countryName}>
-            {name}
+            <Link to={`/country/${idx.toLowerCase()}`}>{name}</Link>
           </div>
 
           <ul className={styles.data}>
@@ -34,12 +37,16 @@ const Content = () => {
   }
 
   return (
-    <div className={styles.content}>
-      {loading ? "Loading..." : countries.map((country, idx) =>
-        countryBox(country.flags.svg, country.name.common, country.population, country.region, country.capital, country.cca2)
-      )}
+    <>
+      <Toolbar search={search} setSearch={setSearch} />
+      <div className={styles.content}>
+        
+        {loading ? "Loading..." : searchItems.map((country, idx) =>
+          countryBox(country.flags.svg, country.name.common, country.population, country.region, country.capital, country.cca3)
+        )}
 
-    </div>
+      </div>
+    </>
   )
 }
 

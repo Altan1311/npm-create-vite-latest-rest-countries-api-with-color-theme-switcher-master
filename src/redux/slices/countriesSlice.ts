@@ -41,7 +41,7 @@ export const countriesSlice = createSlice({
         state.loading = true;
       })
       .addCase(getAllCountries.fulfilled, (state, { payload }) => {
-        console.log("Loading Data successful")
+        console.log(state.data)
         state.loading = false;
         state.data = payload;
       })
