@@ -11,3 +11,19 @@
 .headline{
   font-weight: 800;
 }
+
+.button{
+  border: 0;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.button:hover, .button:focus{
+  box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.2);
+  color: rgb(0, 247, 255);
+  cursor: pointer;
+}

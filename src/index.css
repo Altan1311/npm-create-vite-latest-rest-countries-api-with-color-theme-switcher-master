@@ -18,3 +18,8 @@
 body{
   font-family: "Nunito Sans", sans-serif;
 }
+
+img, svg{
+  max-width: 100%;
+  max-height: 100%;
+}

@@ -1,7 +1,55 @@
-.search{
+.toolbar{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
+.search{
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  height: 45px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 9%;
+}
+
+.searchIcon{
+  color: rgb(172, 172, 172);
+  width: 40px;
 }
 
 .input{
-  
+  font-size: 13px;
+  border: 0;
+  width: 87%;
+}
+
+.input:focus{
+  border: 0;
+  outline: none;
+}
+
+.input::placeholder{
+  color: #b9b9b9;
+}
+
+.select{
+  appearance: none;
+  background: white;
+  border: 0;
+  padding: 15px 25px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  width: clamp(150px, 55%, 250px);
+  font-size: 11px;
+}
+
+.select::after {
+  content: '\25BC'; /* Unicode character for a down-pointing triangle */
+  position: absolute;
+  top: 50%;
+  right: 10px; /* Adjust the right offset to move the arrow to the left */
+  transform: translateY(-50%);
+  pointer-events: none; /* Ensure the arrow doesn't interfere with clicks */
 }

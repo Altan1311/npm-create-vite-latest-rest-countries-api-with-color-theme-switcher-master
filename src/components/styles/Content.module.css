@@ -1,0 +1,35 @@
+.content{
+  padding: 50px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.country{
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+}
+
+.description{
+  padding: 30px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.countryName{
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.data{
+  list-style: none;
+}
+
+.dataTopic{
+  font-weight: 600;
+}
+
+.flag img{
+  border-radius: 5px 5px 0 0;
+}

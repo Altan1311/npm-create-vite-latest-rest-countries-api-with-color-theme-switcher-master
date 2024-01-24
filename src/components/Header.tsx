@@ -1,6 +1,9 @@
 import React from 'react'
 import styles from './styles/Header.module.css'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMoon } from '@fortawesome/free-regular-svg-icons'
+
 const Header = () => {
   return (
     <header className={styles.header}>
@@ -8,8 +11,9 @@ const Header = () => {
         Where in the world!
       </div>
 
-      <button>
-        Dark Mode
+      <button type="button" className={styles.button}>
+        <FontAwesomeIcon icon={faMoon} />
+        <span>Dark Mode</span>
       </button>
     </header>
   )
