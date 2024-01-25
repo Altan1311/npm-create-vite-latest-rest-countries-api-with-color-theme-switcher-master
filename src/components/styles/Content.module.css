@@ -6,8 +6,10 @@
 }
 
 .country{
+  background: white;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
   border-radius: 5px;
+  transition: background-color .2s ease-in-out;
 }
 
 .description{

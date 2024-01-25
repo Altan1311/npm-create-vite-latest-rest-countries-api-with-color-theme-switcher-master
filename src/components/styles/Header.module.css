@@ -1,4 +1,5 @@
 .header{
+  background: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -6,6 +7,7 @@
   width: 100%;
   height: 80px;
   padding: 0 20px;
+  transition: background-color .2s ease-in-out;
 }
 
 .headline{
@@ -21,7 +23,6 @@
   border-radius: 5px;
 }
 
-.button:hover, .button:focus{
-  color: rgb(0, 247, 255);
+.button:hover{
   cursor: pointer;
 }

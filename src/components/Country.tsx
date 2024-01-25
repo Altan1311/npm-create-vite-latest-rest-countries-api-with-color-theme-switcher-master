@@ -8,6 +8,7 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 
 const Country = () => {
   const { id } = useParams()
+  const { mode } = useSelector(state => state.countries)
   const countries = useSelector(selectCountries)
   const country = countries && countries.find(item => item.cca3.toLowerCase() === id)
 
@@ -24,11 +25,16 @@ const Country = () => {
     )
   }
 
+  const modeStyle = {
+    backgroundColor: mode === "dark" ? "#2b3743" : "rgb(252, 252, 252)",
+    color: mode === "dark" ? "white" : "black",
+  }
+
   return (
     <div className={styles.country}>
       {country ? 
         <>
-          <Link to="/" className={styles.backLink}>
+          <Link to="/" className={styles.backLink} style={modeStyle}>
             <FontAwesomeIcon icon={faArrowLeft} />
             <span>Back</span>
           </Link>
@@ -55,7 +61,7 @@ const Country = () => {
               <div className={styles.label}>Border Countries</div>
               <div className={styles.borderList}>
                 {country.borders.map((borderCountry, idx) => (
-                  <Link to={`/country/${borderCountry.toLowerCase()}`} className={styles.borderCountry} key={`boder-${idx}`}>
+                  <Link style={modeStyle} to={`/country/${borderCountry.toLowerCase()}`} className={styles.borderCountry} key={`boder-${idx}`}>
                     {countries.find(item => item.cca3 === borderCountry).name.common}
                   </Link>
                 ))}

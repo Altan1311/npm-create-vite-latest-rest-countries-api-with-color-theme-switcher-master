@@ -11,14 +11,25 @@ import { Routes, Route } from 'react-router-dom'
 
 function App() {
   const dispatch = useDispatch()
+  const { mode } = useSelector((state) => state.countries)
   const [search, setSearch] = useState("")
 
   useEffect(() => {
     dispatch(getAllCountries())
   }, [])
 
+  useEffect(() => {
+    if(mode === "dark"){
+      document.body.style.backgroundColor = "#202d36"
+      document.body.style.color = "white"
+    }else{
+      document.body.style.backgroundColor = "rgb(252, 252, 252)"
+      document.body.style.color = "black"
+    }
+  }, [mode])
+
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} >
       
       <Header />
       

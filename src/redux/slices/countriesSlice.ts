@@ -12,7 +12,7 @@ export const getAllCountries = createAsyncThunk(
 
 export const getCountriesByRegion = createAsyncThunk(
   'countries/getCountriesByRegion',
-  async ({ region }) => {
+  async ({ region }: { region: string }) => {
     const res = await fetch(`https://restcountries.com/v3.1/region/${region}`)
     const json = await res.json()
 
@@ -65,8 +65,8 @@ export const countriesSlice = createSlice({
   }
 })
 
-export const selectCountries = state => state.countries.data
+export const selectCountries = (state: any) => state.countries.data
 
-const { changeMode } = countriesSlice.actions
+export const { changeMode } = countriesSlice.actions
 
 export const countriesReducer = countriesSlice.reducer
