@@ -1,4 +1,3 @@
-import React from 'react'
 import styles from './styles/Header.module.css'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -7,9 +6,10 @@ import { faMoon as faMoonSolid } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { changeMode } from '../redux/slices/countriesSlice'
+import { RootState } from '../redux/store'
 
 const Header = () => {
-  const { loading, mode } = useSelector((state) => state.countries)
+  const { mode } = useSelector((state: RootState) => state.countries)
   const dispatch = useDispatch()
 
   const fontColor = {

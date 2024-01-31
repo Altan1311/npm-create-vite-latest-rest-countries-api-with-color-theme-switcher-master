@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
+import { RootState } from "../store"
 
 export const getAllCountries = createAsyncThunk(
   'countries/getAllCountries',
@@ -65,7 +66,7 @@ export const countriesSlice = createSlice({
   }
 })
 
-export const selectCountries = (state: any) => state.countries.data
+export const selectCountries = (state: RootState) => state.countries.data
 
 export const { changeMode } = countriesSlice.actions
 

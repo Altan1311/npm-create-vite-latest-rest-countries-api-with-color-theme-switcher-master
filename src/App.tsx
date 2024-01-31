@@ -2,16 +2,16 @@ import { useEffect, useState } from 'react'
 
 import styles from './App.module.css'
 import Header from './components/Header'
-import Toolbar from './components/Toolbar'
 import Content from './components/Content'
 import Country from './components/Country'
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllCountries } from './redux/slices/countriesSlice'
 import { Routes, Route } from 'react-router-dom'
+import { AppDispatch, RootState } from './redux/store'
 
 function App() {
-  const dispatch = useDispatch()
-  const { mode } = useSelector((state) => state.countries)
+  const dispatch: AppDispatch = useDispatch()
+  const { mode } = useSelector((state: RootState) => state.countries)
   const [search, setSearch] = useState("")
 
   useEffect(() => {

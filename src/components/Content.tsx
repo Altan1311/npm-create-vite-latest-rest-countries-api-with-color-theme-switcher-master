@@ -1,16 +1,16 @@
-import React, { Dispatch, useEffect, useState } from 'react'
+import { Dispatch, useEffect } from 'react'
 import styles from './styles/Content.module.css'
 import { useSelector } from 'react-redux'
 import { selectCountries } from '../redux/slices/countriesSlice'
 import { Link } from 'react-router-dom'
 import Toolbar from './Toolbar'
+import { RootState } from '../redux/store'
 
 const Content = ({ search, setSearch }: { search: string, setSearch: Dispatch<string>}) => {
-  const { loading } = useSelector((state) => state.countries)
+  const { loading, mode } = useSelector((state: RootState) => state.countries)
   const countries = useSelector(selectCountries)
-  const { mode } = useSelector(state => state.countries)
   
-  const searchItems = search !== "" ? countries.filter((country) => country.name.common.toLowerCase().includes(search)) : countries
+  const searchItems = search !== "" ? countries.filter((country: any) => country.name.common.toLowerCase().includes(search)) : countries
 
   useEffect(() => {
     console.log(countries)
@@ -44,10 +44,10 @@ const Content = ({ search, setSearch }: { search: string, setSearch: Dispatch<st
 
   return (
     <>
-      <Toolbar search={search} setSearch={setSearch} />
+      <Toolbar setSearch={setSearch} />
       <div className={styles.content}>
         
-        {loading ? "Loading..." : searchItems.map((country) =>
+        {loading ? "Loading..." : searchItems.map((country: any) =>
           countryBox(country.flags.svg, country.name.common, country.population, country.region, country.capital, country.cca3)
         )}
 

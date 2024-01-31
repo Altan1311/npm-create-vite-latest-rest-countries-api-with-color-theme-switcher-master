@@ -4,10 +4,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllCountries, getCountriesByRegion } from '../redux/slices/countriesSlice'
+import { AppDispatch, RootState } from '../redux/store'
 
-const Toolbar = ({ search, setSearch }) => {
-  const dispatch = useDispatch()
-  const { mode } = useSelector(state => state.countries)
+type ToolbarProps = {
+  setSearch: React.Dispatch<string>
+}
+
+const Toolbar = ({ setSearch }: ToolbarProps) => {
+  const dispatch: AppDispatch = useDispatch()
+  const { mode } = useSelector((state: RootState) => state.countries)
 
   const handleFilter = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const region = e.target.value

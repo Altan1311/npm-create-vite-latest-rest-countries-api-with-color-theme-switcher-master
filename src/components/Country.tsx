@@ -1,22 +1,23 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import styles from './styles/Country.module.css'
 import { Link, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { selectCountries } from '../redux/slices/countriesSlice'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { RootState } from '../redux/store'
 
 const Country = () => {
   const { id } = useParams()
-  const { mode } = useSelector(state => state.countries)
-  const countries = useSelector(selectCountries)
-  const country = countries && countries.find(item => item.cca3.toLowerCase() === id)
+  const { mode } = useSelector((state: RootState) => state.countries)
+  const countries: any = useSelector(selectCountries)
+  const country: any = countries && countries.find((item: any) => item.cca3.toLowerCase() === id)
 
   useEffect(() => {
     console.log(country)
   }, [country])
 
-  const stat = (label, data) => {
+  const stat = (label: string, data: string | number) => {
     return (
       <div className={styles.stat}>
         <span className={styles.label}>{label}</span>
@@ -60,9 +61,11 @@ const Country = () => {
             {country.borders && <div className={styles.borderCountries}>
               <div className={styles.label}>Border Countries</div>
               <div className={styles.borderList}>
-                {country.borders.map((borderCountry, idx) => (
+                {country.borders.map((borderCountry: any, idx: number) => (
                   <Link style={modeStyle} to={`/country/${borderCountry.toLowerCase()}`} className={styles.borderCountry} key={`boder-${idx}`}>
-                    {countries.find(item => item.cca3 === borderCountry).name.common}
+                    {
+                      countries.find((item: any) => item.cca3 === borderCountry)?.name.common
+                    }
                   </Link>
                 ))}
               </div>
