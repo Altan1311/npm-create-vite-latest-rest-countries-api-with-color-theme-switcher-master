@@ -1,5 +1,5 @@
 .content{
-  padding: 50px 30px;
+  margin-top : 50px;
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -39,14 +39,15 @@
 }
 
 
-@media only screen and (min-width: 700px) {
+@media only screen and (min-width: 600px) {
   .content{
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-between;
     width: 100%;
   }
 
   .country{
-    width: 250px;
+    width: calc(25% - 25px);
   }
 }

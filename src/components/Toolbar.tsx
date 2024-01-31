@@ -25,7 +25,7 @@ const Toolbar = ({ setSearch }: ToolbarProps) => {
   }
 
   const modeStyle = {
-    backgroundColor: mode === "dark" ? "#2b3743" : "rgb(252, 252, 252)",
+    backgroundColor: mode === "dark" ? "#2b3743" : "white",
     color: mode === "dark" ? "white" : "black",
   }
 
