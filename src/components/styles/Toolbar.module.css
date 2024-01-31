@@ -57,3 +57,19 @@
   transform: translateY(-50%);
   pointer-events: none; /* Ensure the arrow doesn't interfere with clicks */
 }
+
+@media only screen and (min-width: 800px) {
+  .toolbar{
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .search{
+    width: 400px;
+    padding: 0 20px;
+  }
+
+  .input{
+    width: 350px;
+  }
+}

@@ -73,3 +73,35 @@
   color: black;
   text-decoration: none;
 }
+
+@media only screen and (min-width: 800px) {
+  .countryWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .flag{
+    width: 40%;
+  }
+  
+  .countryInfo{
+    width: 50%;
+  }
+
+  .dataWrapper{
+    display: flex;
+    align-items: flex-start;
+    column-gap: 60px;
+  }
+
+  .additionalData{
+    margin: 0;
+    padding: 0;
+  }
+
+  .borderCountries{
+    flex-direction: row;
+    margin-top: 50px;
+  }
+}

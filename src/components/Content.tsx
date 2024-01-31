@@ -21,11 +21,11 @@ const Content = ({ search, setSearch }: { search: string, setSearch: Dispatch<st
     color: mode === "dark" ? "white" : "black",
   }
 
-  const countryBox = (flag: string, name: string, population: number, region: string, capital: string, idx: string) => {
+  const countryBox = (flag: string, alt: string, name: string, population: number, region: string, capital: string, idx: string) => {
     return (
       <Link to={`/country/${idx.toLowerCase()}`} className={styles.country} key={idx} style={modeStyle}>
         <div className={styles.flag}>
-          <img src={flag} />
+          <img src={flag} alt={alt} />
         </div>
         <div className={styles.description}>
           <div className={styles.countryName}>
@@ -48,7 +48,7 @@ const Content = ({ search, setSearch }: { search: string, setSearch: Dispatch<st
       <div className={styles.content}>
         
         {loading ? "Loading..." : searchItems.map((country: any) =>
-          countryBox(country.flags.svg, country.name.common, country.population, country.region, country.capital, country.cca3)
+          countryBox(country.flags.png, country.flags.alt, country.name.common, country.population, country.region, country.capital, country.cca3)
         )}
 
       </div>

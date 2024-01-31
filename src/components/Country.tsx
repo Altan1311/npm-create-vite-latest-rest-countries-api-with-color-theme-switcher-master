@@ -39,37 +39,47 @@ const Country = () => {
             <FontAwesomeIcon icon={faArrowLeft} />
             <span>Back</span>
           </Link>
-          <div className={styles.flag}>
-            <img src={country.flags.svg} alt={country.name.common} />
-          </div>
-          
-          <div className={styles.countryName}>
-            {country.name.common}
-          </div>
-
-          <div className={styles.stats}>
-            {stat("Native Name:", country.name.nativeName[Object.keys(country.name.nativeName)[0]].common)}
-            {stat("Population:", country.population)}
-            {stat("Region:", country.region)}
-            {country.subregion && stat("Sub Region:", country.subregion)}
-            <div className={styles.additionalData}>
-              {stat("Top Level Domain:", country.tld.join(", "))}
-              {stat("Currencies:", Object.keys(country.currencies).map(key => country.currencies[key].name).join(", "))}
-              {stat("Languages:", Object.keys(country.languages).map(key => country.languages[key]).join(", "))}
+          <div className={styles.countryWrapper}>
+            <div className={styles.flag}>
+              <img src={country.flags.svg} alt={country.name.common} />
             </div>
-            
-            {country.borders && <div className={styles.borderCountries}>
-              <div className={styles.label}>Border Countries</div>
-              <div className={styles.borderList}>
-                {country.borders.map((borderCountry: any, idx: number) => (
-                  <Link style={modeStyle} to={`/country/${borderCountry.toLowerCase()}`} className={styles.borderCountry} key={`boder-${idx}`}>
-                    {
-                      countries.find((item: any) => item.cca3 === borderCountry)?.name.common
-                    }
-                  </Link>
-                ))}
+
+            <div className={styles.countryInfo}>
+              <div className={styles.countryName}>
+                {country.name.common}
               </div>
-            </div>}
+
+              <div className={styles.stats}>
+                <div className={styles.dataWrapper}>
+                  <div className={styles.mainData}>
+                    {stat("Native Name:", country.name.nativeName[Object.keys(country.name.nativeName)[0]].common)}
+                    {stat("Population:", country.population)}
+                    {stat("Region:", country.region)}
+                    {country.subregion && stat("Sub Region:", country.subregion)}
+                  </div>
+                  
+                  <div className={styles.additionalData}>
+                    {stat("Top Level Domain:", country.tld.join(", "))}
+                    {stat("Currencies:", Object.keys(country.currencies).map(key => country.currencies[key].name).join(", "))}
+                    {stat("Languages:", Object.keys(country.languages).map(key => country.languages[key]).join(", "))}
+                  </div>
+                </div>
+                
+                
+                {country.borders && <div className={styles.borderCountries}>
+                  <div className={styles.label}>Border Countries</div>
+                  <div className={styles.borderList}>
+                    {country.borders.map((borderCountry: any, idx: number) => (
+                      <Link style={modeStyle} to={`/country/${borderCountry.toLowerCase()}`} className={styles.borderCountry} key={`boder-${idx}`}>
+                        {
+                          countries.find((item: any) => item.cca3 === borderCountry)?.name.common
+                        }
+                      </Link>
+                    ))}
+                  </div>
+                </div>}
+              </div>
+            </div>
           </div>
         </> 
       : "Loading..."}
